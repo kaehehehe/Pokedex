@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Details from './pages/Details';
+import Home from './pages/Home/Home';
+import Details from './pages/Details/Details';
 import GlobalStyle from './GlobalStyle';
 
 const App = () => {

@@ -1,17 +1,8 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 
-import Pokemon from '../components/Pokemon';
-
-const Container = styled.ul`
-  max-width: 1000px;
-  width: 100vw;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
-  row-gap: 10px;
-  margin-top: 100px;
-`;
+import Pokemon from '../../components/Pokemon/Pokemon';
+import * as S from './style';
 
 const Home = ({ setPokemons, pokemons }) => {
   const fetchPokemons = async () => {
@@ -35,10 +26,10 @@ const Home = ({ setPokemons, pokemons }) => {
   }, []);
 
   return (
-    <Container>
+    <S.Container>
       {pokemons &&
         pokemons.map((item) => <Pokemon key={item.name} data={item} />)}
-    </Container>
+    </S.Container>
   );
 };
 
