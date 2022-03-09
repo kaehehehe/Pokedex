@@ -35,4 +35,5 @@ export const Type = styled.li`
 
 export const Status = styled.div`
   flex-grow: 2;
+  width: 50px;
 `;
