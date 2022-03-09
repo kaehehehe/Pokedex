@@ -16,15 +16,13 @@ const Details = ({ pokemons }) => {
   }, []);
 
 
-
   return (
     <>
       <S.Container>
         <S.ImageAndType>
-          <S.Images>
-            <img src={details && details.sprites.front_default} />
-            <img src={details && details.sprites.back_default} />
-          </S.Images>
+          <S.Image
+            src={details && details.sprites.other.dream_world.front_default}
+          />
           <S.TypeWrapper>
             {details &&
               details.types.map((type, index) => (
@@ -39,7 +37,7 @@ const Details = ({ pokemons }) => {
           </S.TypeWrapper>
         </S.ImageAndType>
         <S.Status>
-          <Chart details={details}  />
+          <Chart details={details} />
         </S.Status>
       </S.Container>
       <button onClick={() => navigate('/')}>Go to Home</button>

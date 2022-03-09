@@ -16,8 +16,8 @@ export const ImageAndType = styled.div`
   flex-grow: 1;
 `;
 
-export const Images = styled.div`
-  display: flex;
+export const Image = styled.img`
+  margin-bottom: 50px;
 `;
 
 export const TypeWrapper = styled.ul`
