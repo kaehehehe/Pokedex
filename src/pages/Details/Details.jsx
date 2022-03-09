@@ -15,7 +15,6 @@ const Details = ({ pokemons }) => {
     setDetails(res[0]);
   }, []);
 
-
   return (
     <>
       <S.Container>
