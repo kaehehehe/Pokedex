@@ -17,6 +17,7 @@ const Details = ({ pokemons }) => {
 
   return (
     <>
+      <S.Button onClick={() => navigate('/')}>Back to Home</S.Button>
       <S.Container>
         <S.ImageAndType>
           <S.Image
@@ -39,7 +40,6 @@ const Details = ({ pokemons }) => {
           <Chart details={details} />
         </S.Status>
       </S.Container>
-      <button onClick={() => navigate('/')}>Go to Home</button>
     </>
   );
 };
