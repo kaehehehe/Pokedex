@@ -28,8 +28,9 @@ export const TypeWrapper = styled.ul`
 export const Type = styled.li`
   background-color: ${({ type }) => type};
   margin-right: ${({ index }) => index === 0 && '15px'};
-  padding: 3px 10px;
+  padding: 10px 15px;
   border-radius: 5px;
+  font-size: 13px;
 `;
 
 export const Status = styled.div`

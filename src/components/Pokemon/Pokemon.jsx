@@ -13,7 +13,7 @@ const Pokemon = ({ data }) => {
       onClick={() => navigate(`/details/${data.name}`)}
     >
       <img src={data.sprites.front_default} alt={data.name} />
-      <h3>{data.name}</h3>
+      <S.Name>{data.name}</S.Name>
     </S.Card>
   );
 };

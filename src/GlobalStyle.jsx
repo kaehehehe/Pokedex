@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
     padding : 0;
   }
 
+  html {
+    font-family: 'Press Start 2P', cursive;
+  }
+
   body {
     display: flex;
     justify-content: center;
