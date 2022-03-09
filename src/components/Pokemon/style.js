@@ -5,7 +5,7 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 20px;
+  /* margin: 0 10px; */
   padding: 20px;
   background-color: ${({ type }) => type};
   cursor: pointer;
@@ -14,6 +14,10 @@ export const Card = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+`;
+
+export const Images = styled.div`
+  display: flex;
 `;
 
 export const Name = styled.h3`

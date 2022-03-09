@@ -12,7 +12,10 @@ const Pokemon = ({ data }) => {
       type={setBackgroundColor(data.types[0].type.name)}
       onClick={() => navigate(`/details/${data.name}`)}
     >
-      <img src={data.sprites.front_default} alt={data.name} />
+      <S.Images>
+        <img src={data.sprites.front_default} alt={data.name} />
+        <img src={data.sprites.back_default} alt={data.name} />
+      </S.Images>
       <S.Name>{data.name}</S.Name>
     </S.Card>
   );
