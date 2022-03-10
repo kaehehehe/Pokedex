@@ -5,14 +5,28 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin: 0 10px; */
   padding: 20px;
   background-color: ${({ type }) => type};
   cursor: pointer;
   transition: all 250ms ease-in;
 
   &:hover {
-    transform: scale(1.05);
+    img {
+      animation-name: jump;
+      animation-duration: 500ms;
+      animation-iteration-count: infinite;
+      animation-direction: reverse;
+    }
+
+    @keyframes jump {
+      from {
+        transform: translateY(0px);
+      }
+
+      to {
+        transform: translateY(8px);
+      }
+    }
   }
 `;
 
