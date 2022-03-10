@@ -5,7 +5,7 @@ export const Header = styled.header`
   justify-content: center;
   align-items: center;
   padding: 40px;
-  color: #ACBAC7;
+  color: white;
   cursor: pointer;
 `;
 

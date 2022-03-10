@@ -3,16 +3,15 @@ import styled from 'styled-components';
 export const Button = styled.div`
   width: fit-content;
   font-size: 12px;
-  padding: 12px 15px;
-  border: 1px solid #acbac7;
-  background-color: #acbac7;
+  padding: 15px;
+  background-color: white;
   border-radius: 5px;
   transition: all 250ms ease-in;
   cursor: pointer;
 
   &:hover {
     opacity: 0.7;
-    transform: scale(0.9);
+    transform: scale(0.97);
   }
 `;
 
@@ -52,4 +51,5 @@ export const Type = styled.li`
 export const Status = styled.div`
   flex-grow: 2;
   width: 50px;
+  background-color: white;
 `;

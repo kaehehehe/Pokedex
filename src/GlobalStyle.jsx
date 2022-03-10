@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #22272D;
+    background-color: #202020;
   } 
 `;
 

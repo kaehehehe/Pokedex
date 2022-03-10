@@ -6,9 +6,10 @@ export const Card = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
+  border-radius: 2px;
   background-color: ${({ type }) => type};
   cursor: pointer;
-  transition: all 250ms ease-in;
+  transition: all 250ms linear;
 
   &:hover {
     img {
