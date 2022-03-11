@@ -13,5 +13,4 @@ export const PokemonCards = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, auto));
   gap: 15px;
-  margin-top: 50px;
 `;

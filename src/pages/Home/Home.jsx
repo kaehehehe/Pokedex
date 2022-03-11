@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as S from './style';
 import SearchBar from '../../components/SearchBar';
 import FilteringSection from '../../components/FilteringSection/FilteringSection';
+import PartySection from '../../components/PartySection/PartySection';
 import Card from '../../components/Card/Card';
 
 const Home = ({ setPokemons, pokemons }) => {
@@ -48,6 +49,7 @@ const Home = ({ setPokemons, pokemons }) => {
         setPokemons={setPokemons}
         allPokemons={allPokemons}
       />
+      <PartySection />
       <S.PokemonCards>
         {pokemons.map((item) => (
           <Card key={item.name} data={item} />
