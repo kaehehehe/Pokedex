@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import * as S from './style';
-import Pokemon from '../../components/Pokemon/Pokemon';
-import FilteringSection from '../../components/FilteringSection/FilteringSection';
 import SearchBar from '../../components/SearchBar';
+import FilteringSection from '../../components/FilteringSection/FilteringSection';
+import Card from '../../components/Card/Card';
 
 const Home = ({ setPokemons, pokemons }) => {
   const [next, setNext] = useState('https://pokeapi.co/api/v2/pokemon/');
@@ -50,7 +50,7 @@ const Home = ({ setPokemons, pokemons }) => {
       />
       <S.PokemonCards>
         {pokemons.map((item) => (
-          <Pokemon key={item.name} data={item} />
+          <Card key={item.name} data={item} />
         ))}
       </S.PokemonCards>
       <button onClick={handleMore}>MORE</button>

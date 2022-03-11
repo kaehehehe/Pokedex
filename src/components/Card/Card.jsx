@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './style';
 import { setBackgroundColor } from '../../utils/setBackgroundColor';
 
-const Pokemon = ({ data }) => {
+const Card = ({ data }) => {
   const navigate = useNavigate();
 
   return (
@@ -21,4 +21,4 @@ const Pokemon = ({ data }) => {
   );
 };
 
-export default Pokemon;
+export default Card;
