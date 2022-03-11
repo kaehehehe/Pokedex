@@ -15,14 +15,25 @@ const Details = ({ pokemons }) => {
     setDetails(res[0]);
   }, []);
 
+  console.log()
+
   return (
     <>
-      <S.Button onClick={() => navigate('/')}>Back to Home</S.Button>
       <S.Container>
         <S.ImageAndType>
           <S.Image
             src={details && details.sprites.other.dream_world.front_default}
           />
+          <S.Name>{details && details.name}</S.Name>
+          <S.Abilities>
+            <S.Ability key={details && details.abilities[0].ability.name}>
+              {details && details.abilities[0].ability.name}
+            </S.Ability>
+            /
+            <S.Ability key={details && details.abilities[1].ability.name}>
+              {details && details.abilities[1].ability.name}
+            </S.Ability>
+          </S.Abilities>
           <S.TypeWrapper>
             {details &&
               details.types.map((type, index) => (

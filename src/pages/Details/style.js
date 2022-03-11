@@ -1,20 +1,5 @@
 import styled from 'styled-components';
 
-export const Button = styled.div`
-  width: fit-content;
-  font-size: 12px;
-  padding: 15px;
-  background-color: white;
-  border-radius: 5px;
-  transition: all 250ms ease-in;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.7;
-    transform: scale(0.97);
-  }
-`;
-
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -32,11 +17,28 @@ export const ImageAndType = styled.div`
 `;
 
 export const Image = styled.img`
-  margin-bottom: 50px;
+  width: 350px;
+  margin-bottom: 20px;
+`;
+
+export const Name = styled.h3`
+  font-size: 30px;
+  color: white;
+  margin-bottom: 20px;
+`;
+
+export const Abilities = styled.ul`
+  display: flex;
+  color: white;
+  margin-bottom: 20px;
+
+`;
+
+export const Ability = styled.li`
+  margin-right: 5px;
 `;
 
 export const TypeWrapper = styled.ul`
-  list-style: none;
   display: flex;
 `;
 

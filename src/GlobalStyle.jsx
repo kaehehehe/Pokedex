@@ -15,7 +15,11 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     background-color: #202020;
-  } 
+  }
+
+  ul {
+  list-style: none;
+  }
 `;
 
 export default GlobalStyle;
