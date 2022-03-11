@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Pokemon from '../../components/Pokemon/Pokemon';
 import * as S from './style';
 
 const Home = ({ setPokemons, pokemons }) => {
-  const fetchPokemons = async () => {
-    return await axios
-      .get('https://pokeapi.co/api/v2/pokemon/?limit=20')
-      .then((res) => res.data.results);
+  const [next, setNext] = useState('https://pokeapi.co/api/v2/pokemon/');
+
+  const fetchPokemons = async (url) => {
+    if (!url) return;
+    return await axios.get(url).then((res) => res.data);
   };
 
   const fetchPokemonDetails = async (arr) => {
@@ -21,15 +22,26 @@ const Home = ({ setPokemons, pokemons }) => {
     });
   };
 
+  const handleMore = () => {
+    fetchPokemons(next).then((res) => {
+      fetchPokemonDetails(res.results);
+      setNext(res.next);
+    });
+  };
+
   useEffect(() => {
-    fetchPokemons().then((res) => fetchPokemonDetails(res));
+    handleMore();
   }, []);
 
   return (
-    <S.Container>
-      {pokemons &&
-        pokemons.map((item) => <Pokemon key={item.name} data={item} />)}
-    </S.Container>
+    <>
+      <S.Container>
+        {pokemons.map((item) => (
+          <Pokemon key={item.name} data={item} />
+        ))}
+      </S.Container>
+      <button onClick={handleMore}>MORE</button>
+    </>
   );
 };
 
