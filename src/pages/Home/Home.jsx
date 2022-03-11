@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as S from './style';
 import Pokemon from '../../components/Pokemon/Pokemon';
 import FilteringSection from '../../components/FilteringSection/FilteringSection';
+import SearchBar from '../../components/SearchBar';
 
 const Home = ({ setPokemons, pokemons }) => {
   const [next, setNext] = useState('https://pokeapi.co/api/v2/pokemon/');
@@ -39,22 +40,21 @@ const Home = ({ setPokemons, pokemons }) => {
     handleMore();
   }, []);
 
-
-
   return (
-    <>
+    <S.Container>
+      <SearchBar />
       <FilteringSection
         pokemons={pokemons}
         setPokemons={setPokemons}
         allPokemons={allPokemons}
       />
-      <S.Container>
+      <S.PokemonCards>
         {pokemons.map((item) => (
           <Pokemon key={item.name} data={item} />
         ))}
-      </S.Container>
+      </S.PokemonCards>
       <button onClick={handleMore}>MORE</button>
-    </>
+    </S.Container>
   );
 };
 

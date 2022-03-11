@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const C = styled.div`
+export const Container = styled.div`
   max-width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const Container = styled.ul`
+export const PokemonCards = styled.ul`
   max-width: 1000px;
   width: 100vw;
   display: grid;
