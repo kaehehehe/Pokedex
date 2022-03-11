@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const C = styled.div`
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Container = styled.ul`
   max-width: 1000px;
   width: 100vw;
