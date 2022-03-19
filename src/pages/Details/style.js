@@ -18,6 +18,7 @@ export const ImageAndType = styled.div`
 
 export const Image = styled.img`
   width: 350px;
+  height: 350px;
   margin-bottom: 20px;
 `;
 
