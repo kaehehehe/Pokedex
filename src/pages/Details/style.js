@@ -21,6 +21,18 @@ export const Image = styled.img`
   margin-bottom: 20px;
 `;
 
+export const NameWrapper = styled.div`
+  display: flex;
+`;
+
+export const LikeIcon = styled.div`
+  font-size: 30px;
+  height: 30px;
+  color: ${({ like }) => (like ? 'red' : 'gray')};
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
 export const Name = styled.h3`
   font-size: 30px;
   color: white;
@@ -31,7 +43,6 @@ export const Abilities = styled.ul`
   display: flex;
   color: white;
   margin-bottom: 20px;
-
 `;
 
 export const Ability = styled.li`

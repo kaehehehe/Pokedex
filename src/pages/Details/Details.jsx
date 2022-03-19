@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { FaHeart } from 'react-icons/fa';
 
 import Chart from '../../components/Radar/RadarChart';
 import { setBackgroundColor } from '../../utils/setBackgroundColor';
 import * as S from './style';
 
 const Details = ({ pokemons }) => {
-  const navigate = useNavigate();
   const { pokemon } = useParams();
   const [details, setDetails] = useState(null);
+  const [like, setLike] = useState(false);
 
   useEffect(() => {
     const res = pokemons.filter((item) => item.name === pokemon);
     setDetails(res[0]);
   }, []);
-
-  console.log()
 
   return (
     <>
@@ -24,7 +23,12 @@ const Details = ({ pokemons }) => {
           <S.Image
             src={details && details.sprites.other.dream_world.front_default}
           />
-          <S.Name>{details && details.name}</S.Name>
+          <S.NameWrapper>
+            <S.LikeIcon like={like} onClick={() => setLike(!like)}>
+              <FaHeart />
+            </S.LikeIcon>
+            <S.Name>{details && details.name}</S.Name>
+          </S.NameWrapper>
           <S.Abilities>
             <S.Ability key={details && details.abilities[0].ability.name}>
               {details && details.abilities[0].ability.name}
