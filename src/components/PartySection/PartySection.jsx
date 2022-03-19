@@ -1,15 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import * as S from './style';
 import { ReactComponent as PokeBall } from '../../assets/pokeball.svg';
 
-const PartySection = () => {
-  const party = [1, 2, 3, 4, 5, 6, 7, 8];
+const PartySection = ({ party }) => {
+  const navigate = useNavigate();
   return (
     <S.PartySection>
-      {party.map((item) => (
-        <S.PokeBallStyle>
-          <PokeBall width={35} height={35} stroke={'gray'} key={item} />
+      {party.map((pokemon) => (
+        <S.PokeBallStyle onClick={() => navigate(`/details/${pokemon}`)}>
+          <PokeBall width={35} height={35} stroke={'white'} key={pokemon} />
         </S.PokeBallStyle>
       ))}
     </S.PartySection>

@@ -7,7 +7,7 @@ import FilteringSection from '../../components/FilteringSection/FilteringSection
 import PartySection from '../../components/PartySection/PartySection';
 import Card from '../../components/Card/Card';
 
-const Home = ({ setPokemons, pokemons }) => {
+const Home = ({ setPokemons, pokemons, party }) => {
   const [next, setNext] = useState('https://pokeapi.co/api/v2/pokemon/');
   const [allPokemons, setAllPokemons] = useState([]);
 
@@ -49,7 +49,7 @@ const Home = ({ setPokemons, pokemons }) => {
         setPokemons={setPokemons}
         allPokemons={allPokemons}
       />
-      <PartySection />
+      <PartySection party={party} />
       <S.PokemonCards>
         {pokemons.map((item) => (
           <Card key={item.name} data={item} />
