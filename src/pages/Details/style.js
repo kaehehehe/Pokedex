@@ -41,12 +41,13 @@ export const Name = styled.h3`
 
 export const Abilities = styled.ul`
   display: flex;
+  flex-direction: column;
   color: white;
   margin-bottom: 20px;
 `;
 
 export const Ability = styled.li`
-  margin-right: 5px;
+  margin-bottom: 8px;
 `;
 
 export const TypeWrapper = styled.ul`

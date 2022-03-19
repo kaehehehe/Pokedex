@@ -35,6 +35,7 @@ const Details = ({ pokemons, party, setParty }) => {
     }
   };
 
+
   return (
     <>
       {details && (
@@ -48,13 +49,11 @@ const Details = ({ pokemons, party, setParty }) => {
               <S.Name>{details.name}</S.Name>
             </S.NameWrapper>
             <S.Abilities>
-              <S.Ability key={details.abilities[0].ability.name}>
-                {details.abilities[0].ability.name}
-              </S.Ability>
-              /
-              <S.Ability key={details.abilities[1].ability.name}>
-                {details.abilities[1].ability.name}
-              </S.Ability>
+              {details.abilities.map((ability) => (
+                <S.Ability key={ability.ability.name}>
+                  {ability.ability.name}
+                </S.Ability>
+              ))}
             </S.Abilities>
             <S.TypeWrapper>
               {details &&
