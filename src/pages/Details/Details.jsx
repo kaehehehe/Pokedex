@@ -37,43 +37,43 @@ const Details = ({ pokemons, party, setParty }) => {
 
   return (
     <>
-      <S.Container>
-        <S.ImageAndType>
-          <S.Image
-            src={details && details.sprites.other.dream_world.front_default}
-          />
-          <S.NameWrapper>
-            <S.LikeIcon like={like} onClick={handleClickLikeBtn}>
-              <FaHeart />
-            </S.LikeIcon>
-            <S.Name>{details && details.name}</S.Name>
-          </S.NameWrapper>
-          <S.Abilities>
-            <S.Ability key={details && details.abilities[0].ability.name}>
-              {details && details.abilities[0].ability.name}
-            </S.Ability>
-            /
-            <S.Ability key={details && details.abilities[1].ability.name}>
-              {details && details.abilities[1].ability.name}
-            </S.Ability>
-          </S.Abilities>
-          <S.TypeWrapper>
-            {details &&
-              details.types.map((type, index) => (
-                <S.Type
-                  index={index}
-                  type={setBackgroundColor(type.type.name)}
-                  key={type.type.name}
-                >
-                  {type.type.name}
-                </S.Type>
-              ))}
-          </S.TypeWrapper>
-        </S.ImageAndType>
-        <S.Status>
-          <Chart details={details} />
-        </S.Status>
-      </S.Container>
+      {details && (
+        <S.Container>
+          <S.ImageAndType>
+            <S.Image src={details.sprites.other.dream_world.front_default} />
+            <S.NameWrapper>
+              <S.LikeIcon like={like} onClick={handleClickLikeBtn}>
+                <FaHeart />
+              </S.LikeIcon>
+              <S.Name>{details.name}</S.Name>
+            </S.NameWrapper>
+            <S.Abilities>
+              <S.Ability key={details.abilities[0].ability.name}>
+                {details.abilities[0].ability.name}
+              </S.Ability>
+              /
+              <S.Ability key={details.abilities[1].ability.name}>
+                {details.abilities[1].ability.name}
+              </S.Ability>
+            </S.Abilities>
+            <S.TypeWrapper>
+              {details &&
+                details.types.map((type, index) => (
+                  <S.Type
+                    index={index}
+                    type={setBackgroundColor(type.type.name)}
+                    key={type.type.name}
+                  >
+                    {type.type.name}
+                  </S.Type>
+                ))}
+            </S.TypeWrapper>
+          </S.ImageAndType>
+          <S.Status>
+            <Chart details={details} />
+          </S.Status>
+        </S.Container>
+      )}
     </>
   );
 };
