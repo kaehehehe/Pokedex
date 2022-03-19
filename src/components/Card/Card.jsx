@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './style';
 import { setBackgroundColor } from '../../utils/setBackgroundColor';
 
-const Card = ({ data }) => {
+const Card = React.forwardRef(({ data }, ref) => {
   const navigate = useNavigate();
 
   return (
     <S.Card
+      ref={ref}
       type={setBackgroundColor(data.types[0].type.name)}
       onClick={() => navigate(`/details/${data.name}`)}
     >
@@ -19,6 +20,6 @@ const Card = ({ data }) => {
       <S.Name>{data.name}</S.Name>
     </S.Card>
   );
-};
+});
 
 export default Card;

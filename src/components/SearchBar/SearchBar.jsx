@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,21 +11,11 @@ const SearchBar = () => {
     inputRef.current.focus();
   }, []);
 
-  const searchPokemon = (keyword) => {
-    try {
-      return axios.get(`https://pokeapi.co/api/v2/pokemon/${keyword}/`);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   const handleSearch = (e) => {
+    const pokemon = inputRef.current.value;
     if (inputRef.current.value === '') return;
     if (e.key === 'Enter') {
-      const keyword = inputRef.current.value;
-      searchPokemon(keyword).then((res) => {
-        navigate(`/details/${res.data.name}`);
-      });
+      navigate(`/details/${pokemon}`);
     }
   };
 

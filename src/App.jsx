@@ -8,7 +8,6 @@ import Header from './components/Header/Header';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
 const App = () => {
-  const [pokemons, setPokemons] = useState([]);
   const [party, setParty] = useLocalStorage('party', []);
 
   return (
@@ -17,21 +16,10 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                pokemons={pokemons}
-                setPokemons={setPokemons}
-                party={party}
-              />
-            }
-          />
+          <Route path="/" element={<Home party={party} />} />
           <Route
             path="/details/:pokemon"
-            element={
-              <Details pokemons={pokemons} party={party} setParty={setParty} />
-            }
+            element={<Details party={party} setParty={setParty} />}
           />
         </Routes>
       </Router>

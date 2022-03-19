@@ -9,13 +9,11 @@ const PartySection = ({ party }) => {
   return (
     <S.PartySection>
       {party.map((pokemon) => (
-        <S.Tooltip>
-          <S.PokeBallStyle
-            onClick={() => navigate(`/details/${pokemon}`)}
-          >
-            <PokeBall width={35} height={35} key={pokemon} />
+        <S.Tooltip key={pokemon}>
+          <S.PokeBallStyle onClick={() => navigate(`/details/${pokemon}`)}>
+            <PokeBall width={35} height={35} />
           </S.PokeBallStyle>
-          <div className='description'>{pokemon}</div>
+          <div className="description">{pokemon}</div>
         </S.Tooltip>
       ))}
     </S.PartySection>

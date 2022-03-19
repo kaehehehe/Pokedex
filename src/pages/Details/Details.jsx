@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 
@@ -6,15 +7,18 @@ import Chart from '../../components/Radar/RadarChart';
 import { setBackgroundColor } from '../../utils/setBackgroundColor';
 import * as S from './style';
 
-const Details = ({ pokemons, party, setParty }) => {
+const Details = ({ party, setParty }) => {
   const { pokemon } = useParams();
   const [details, setDetails] = useState(null);
   const [like, setLike] = useState(false);
 
+  const searchPokemon = (pokemon) => {
+    return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`);
+  };
+
   useEffect(() => {
     setLike(party.includes(pokemon));
-    const res = pokemons.filter((item) => item.name === pokemon);
-    setDetails(res[0]);
+    searchPokemon(pokemon).then((res) => setDetails(res.data));
   }, []);
 
   const handleClickLikeBtn = () => {
@@ -34,7 +38,6 @@ const Details = ({ pokemons, party, setParty }) => {
       }
     }
   };
-
 
   return (
     <>

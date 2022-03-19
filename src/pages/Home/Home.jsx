@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import axios from 'axios';
 
 import * as S from './style';
@@ -7,9 +7,10 @@ import FilteringSection from '../../components/FilteringSection/FilteringSection
 import PartySection from '../../components/PartySection/PartySection';
 import Card from '../../components/Card/Card';
 
-const Home = ({ setPokemons, pokemons, party }) => {
+const Home = ({ party }) => {
   const [next, setNext] = useState('https://pokeapi.co/api/v2/pokemon/');
-  const [allPokemons, setAllPokemons] = useState([]);
+  const [pokemonList, setPokemonList] = useState([]);
+  const targetRef = useRef(null);
 
   const fetchPokemons = async (url) => {
     if (!url) return;
@@ -19,44 +20,61 @@ const Home = ({ setPokemons, pokemons, party }) => {
   const fetchPokemonDetails = async (arr) => {
     return arr.map(async (item) => {
       const res = await axios.get(item.url);
-      setPokemons((state) => {
+      setPokemonList((state) => {
         state = [...state, res.data];
         return state;
       });
-      setAllPokemons((state) => {
-        state = [...state, res.data];
-        return state;
-      });
-    });
-  };
-
-  const handleMore = () => {
-    fetchPokemons(next).then((res) => {
-      fetchPokemonDetails(res.results);
-      setNext(res.next);
     });
   };
 
   useEffect(() => {
-    handleMore();
+    fetchPokemons(next).then((res) => {
+      fetchPokemonDetails(res.results);
+      setNext(res.next);
+    });
   }, []);
 
+  const callback = useCallback(
+    async ([entry]) => {
+      if (entry.isIntersecting) {
+        fetchPokemons(next).then((res) => {
+          fetchPokemonDetails(res.results);
+          setNext(res.next);
+        });
+      }
+    },
+    [targetRef.current]
+  );
+
+  useEffect(() => {
+    if (!targetRef.current) return;
+    const observer = new IntersectionObserver(callback);
+    observer.observe(targetRef.current);
+    return () => observer.disconnect();
+  });
+
   return (
-    <S.Container>
-      <SearchBar />
-      <FilteringSection
-        pokemons={pokemons}
-        setPokemons={setPokemons}
-        allPokemons={allPokemons}
-      />
-      <PartySection party={party} />
-      <S.PokemonCards>
-        {pokemons.map((item) => (
-          <Card key={item.name} data={item} />
-        ))}
-      </S.PokemonCards>
-      <button onClick={handleMore}>MORE</button>
-    </S.Container>
+    <>
+      {pokemonList && (
+        <S.Container>
+          <SearchBar />
+          <FilteringSection
+            pokemonList={pokemonList}
+            setPokemonList={setPokemonList}
+          />
+          <PartySection party={party} />
+          <S.PokemonCards>
+            {pokemonList.map((pokemon, index) => (
+              <Card
+                key={pokemon.id}
+                data={pokemon}
+                ref={index === pokemonList.length - 1 ? targetRef : null}
+              />
+            ))}
+          </S.PokemonCards>
+        </S.Container>
+      )}
+    </>
   );
 };
 
