@@ -25,9 +25,10 @@ const Details = ({ party, setParty }) => {
   }, []);
 
   const handleClickLikeBtn = () => {
+    const name = details.name;
     if (like) {
       setLike(false);
-      const index = party.indexOf(pokemon);
+      const index = party.indexOf(name);
       party.splice(index, 1);
       setParty(party);
     } else {
@@ -36,7 +37,7 @@ const Details = ({ party, setParty }) => {
         return;
       } else {
         setLike(true);
-        const newParty = [...party, pokemon];
+        const newParty = [...party, name];
         setParty(newParty);
       }
     }
