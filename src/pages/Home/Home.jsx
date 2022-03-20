@@ -58,10 +58,6 @@ const Home = ({ party }) => {
       {pokemonList && (
         <S.Container>
           <SearchBar />
-          <FilteringSection
-            pokemonList={pokemonList}
-            setPokemonList={setPokemonList}
-          />
           <PartySection party={party} />
           <S.PokemonCards>
             {pokemonList.map((pokemon, index) => (

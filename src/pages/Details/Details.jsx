@@ -17,8 +17,11 @@ const Details = ({ party, setParty }) => {
   };
 
   useEffect(() => {
-    setLike(party.includes(pokemon));
-    searchPokemon(pokemon).then((res) => setDetails(res.data));
+    searchPokemon(pokemon).then((res) => {
+      const details = res.data;
+      setDetails(details);
+      setLike(party.includes(details.name));
+    });
   }, []);
 
   const handleClickLikeBtn = () => {
