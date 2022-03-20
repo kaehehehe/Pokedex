@@ -10,6 +10,7 @@ import Card from '../../components/Card/Card';
 const Home = ({ party }) => {
   const [next, setNext] = useState('https://pokeapi.co/api/v2/pokemon/');
   const [pokemonList, setPokemonList] = useState([]);
+  const [filteredPokemonList, setFilteredPokemonList] = useState(null);
   const targetRef = useRef(null);
 
   const fetchPokemons = async (url) => {
@@ -55,21 +56,27 @@ const Home = ({ party }) => {
 
   return (
     <>
-      {pokemonList && (
-        <S.Container>
-          <SearchBar />
-          <PartySection party={party} />
-          <S.PokemonCards>
-            {pokemonList.map((pokemon, index) => (
-              <Card
-                key={pokemon.id}
-                data={pokemon}
-                ref={index === pokemonList.length - 1 ? targetRef : null}
-              />
-            ))}
-          </S.PokemonCards>
-        </S.Container>
-      )}
+      <S.Container>
+        <SearchBar />
+        <FilteringSection
+          pokemonList={pokemonList}
+          setFilteredPokemonList={setFilteredPokemonList}
+        />
+        <PartySection party={party} />
+        <S.PokemonCards>
+          {filteredPokemonList
+            ? filteredPokemonList.map((pokemon) => (
+                <Card key={pokemon.id} data={pokemon} />
+              ))
+            : pokemonList.map((pokemon, index) => (
+                <Card
+                  key={pokemon.id}
+                  data={pokemon}
+                  ref={index === pokemonList.length - 1 ? targetRef : null}
+                />
+              ))}
+        </S.PokemonCards>
+      </S.Container>
     </>
   );
 };
