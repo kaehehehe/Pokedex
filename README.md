@@ -1,5 +1,5 @@
 # Pokedex
-포켓몬 도감
+결과물 👉 [포켓몬 도감](https://kaehehehe.github.io/Pokedex/)
 
 ### ✨주요 기능
 
